@@ -1,18 +1,35 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <!-- <img src="../assets/logo.png" alt="Vue logo">
+    <HelloWorld msg="HI" :title="'hello~~~~~'"/> -->
+    <MainItem
+    :info="title"
+    :count="parentNum"
+    @unmounted="numAddOne"
+    />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import HelloWorld from '@/components/HelloWorld.vue';
+import MainItem from '@/components/MainItem.vue';
 
 export default {
-  name: 'HomeView',
   components: {
-    HelloWorld
+    HelloWorld,
+    MainItem
+  },
+  data() {
+    return {
+      title: "AA",
+      parentName: 0
+    }
+  },
+  methods: {
+    numAddOne(val){
+      this.parentNum += val
+    }
   }
 }
 </script>
